@@ -1,3 +1,5 @@
-train_path: "data/mit_bih/mitbih_train.csv"
-test_path: "data/mit_bih/mitbih_test.csv"
+processed_path: ${preprocess.processed_data_path}
 val_split: 0.2
+test_split: 0.1
+batch_size: ${train.batch_size}
+num_workers: 4
