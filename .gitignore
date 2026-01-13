@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+
+# ML/Data
+data/mit_bih/*
+!data/mit_bih/.gitkeep
+data/processed/
+models/*.ckpt
+models/*.onn
+
+# MLflow
+mlruns/
+mlflow.db
+outputs/
+
+# DVC
+/data/raw
+/data/processed
+.dvc/config.local
+
+# Hydra
+multirun/
+outputs/

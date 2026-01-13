@@ -2,13 +2,18 @@ import lightning as L
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from omegaconf import OmegaConf
 from torchmetrics.classification import MulticlassAccuracy
 
 
 class ECGModel(L.LightningModule):
     def __init__(self, cfg):
         super().__init__()
-        self.save_hyperparameters()
+        hparams = OmegaConf.to_container(cfg, resolve=True)
+        if "preprocess" in hparams and "label_map" in hparams["preprocess"]:
+            del hparams["preprocess"]["label_map"]
+
+        self.save_hyperparameters(hparams)
         self.cfg = cfg
 
         # Простая архитектура для классификации 1D сигналов
