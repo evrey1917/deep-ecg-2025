@@ -1,4 +1,5 @@
 [core]
-    remote = myremote
-['remote "myremote"']
-    url = gdrive://1ZKZiirQZC43yOlPE848nUEmjYY3i7Bof
+    remote = storage
+['remote "storage"']
+    url = s3://dvc-ecg-2025
+    endpointurl = https://storage.yandexcloud.net
