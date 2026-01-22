@@ -28,11 +28,10 @@ def process_wfdb_file(record_path: str, window_size: int):
 
 @hydra.main(version_base=None, config_path="../configs", config_name="config")
 def main(cfg: DictConfig):
-    # Путь к записи берется из конфига (например, data/raw/100)
-    # По умолчанию используем тестовый файл из сырых данных
-    input_path = cfg.get("input_path", "data/mit_bih/100")
-    model_path = cfg.get("model_path", "models/ecg_model.onnx")
-    window_size = cfg.preprocess.get("window_size", 187)
+
+    input_path = cfg.infer.get("input_path")
+    model_path = cfg.infer.get("model_path")
+    window_size = cfg.preprocess.get("window_size")
 
     path = Path(input_path)
 

@@ -15,12 +15,10 @@ def export_to_onnx(cfg: DictConfig):
     используя параметры из конфигурации препроцессинга.
     """
     # 1. Поиск чекпоинта и путей (берем из конфига)
-    checkpoint_path = cfg.train.get("checkpoint_path", "models/last.ckpt")
-    onnx_path = cfg.train.get("model_path", "models/ecg_model.onnx")
+    checkpoint_path = cfg.train.get("checkpoint_path")
+    onnx_path = cfg.train.get("model_path")
 
-    # Извлекаем window_size из конфига препроцессинга (default.yaml)
-    # Если в конфиге нет такого поля, используем 187 как значение по умолчанию
-    window_size = cfg.preprocess.get("window_size", 187)
+    window_size = cfg.preprocess.get("window_size")
 
     if not Path(checkpoint_path).exists():
         print(f"Ошибка: Чекпоинт {checkpoint_path} не найден. Сначала обучите модель.")
