@@ -51,6 +51,7 @@ def main(cfg: DictConfig):
     # 2. Получение карты классов из конфига Hydra (секция preprocess)
     if "preprocess" in cfg and "label_map" in cfg.preprocess:
         label_map = cfg.preprocess.label_map
+        label_map = {"N": 0, "S": 1, "V": 2, "F": 3, "Q": 4}
     else:
         # Фолбэк для стандартных классов AAMI
         label_map = {"N": 0, "S": 1, "V": 2, "F": 3, "Q": 4}
